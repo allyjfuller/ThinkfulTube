@@ -1,14 +1,75 @@
-h1 {
-	font-family: 'Shrikhand', cursive;
-}
 
 body {
-  padding-top: 20px;
-  padding-left: 20px;
+	text-align: left;
+	padding-top: 20px;
+  	padding-left: 20px;
 }
 
+#page-wrap {
+	text-align: center;
+	width: 800px;
+	margin: 0 auto;
+}
 
-#youtube-search-term {
+h1 {
+	font-family: 'Shrikhand', cursive;
+	font-size: 60px;
+	margin-bottom: 0;
+}
+
+p {
+	font-family: 'Nunito Sans', sans-serif;
+	margin-top: 0;
 	margin-bottom: 20px;
 }
 
+#search-form {
+	text-align: center;
+}
+
+#search-results li {
+	text-align: center;
+	list-style-type: none;
+	float: left;
+	max-width: 25%;
+	margin-left: 0;
+	margin-bottom: 0;
+	padding: 0.5em;
+	overflow-wrap: break-word;
+}
+
+#search-results li img {
+	display: block;
+	width: 100%;
+}
+
+#search-results li p {
+	text-align: left;
+	list-style-type: none;
+	padding: 0.5em;
+	margin: 0.5rem 0.5rem 1rem 0.5rem;
+	width: 80%;
+	height: 2.6rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 100%) {
+	.app {
+		width: 100%;
+	}
+	#search-results {
+		width: 100%;
+	}
+	#search-results li {
+		display: inline-block;
+		max-width: 80%;
+		margin-left: 0;
+		clear: both;
+
+	}
+	#search-results p {
+		width: 100%;
+	}
+}
