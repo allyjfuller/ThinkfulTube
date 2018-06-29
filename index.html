@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>ThinkfulTube</title>
-  <link href="index.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>ThinkfulTube</title>
+          <link href="index.css" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="index.js"></script>
+    </head>
 <body>
-
-    <h1>Search ThinkfulTube</h1>
-
-
-  <div>
-    <form class="form-inline" id="youtube-search-term">
-        <input type="text" class="form-control" id="youtube-query" placeholder="Type here..." required/>
-        <input type="submit" class="btn btn-primary" value="SEARCH"/>
-      </form>
+  <div id="page-wrap">
+    <div class="head-container">
+      
+      <h1>ThinkfulTube</h1>
+        
+        <p>Use YouTube's Data API to search your favorite videos</p>
+    
+    </div>
   </div>
-<container>
-  <div class="container" id="youtube-search-results">
+<div class="app">
+  <div class="search-container">
+        <form id="search-form">
+          <input id="search-term" type="text" name="text-field" placeholder="Search YouTube...">
+          <input type="submit">
+        </form>
   </div>
-</container>
+</div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-  <script src="index.js"></script>
+  <div id="search-results">
+    
+      <ul></ul>
+  
+  </div>
+
   
 </body>
 </html>
