@@ -1,33 +1,40 @@
-function getResults(item) {
-  var url = 'https://www.googleapis.com/youtube/v3/search';
-  var params = {
-    part: "snippet",
-    key: "AIzaSyA2ged1i5fKjk7EgAFvzkamnLbdD4L8qiw",
-    q: item,
-    maxResults: 10
-  };
-  $.getJSON(url, params, function(data){
-    returnResults(data.items);
-  });
-};
 
-function returnResults(response){
-  var dom = "";
-  $.each(response, function(x, value){
-      dom += '<div>';
-      dom += '<a href="https://www.youtube.com/watch?v=' + value.id.videoId + '" target="newtab"><img src="' + value.snippet.thumbnails.default.url + '"></a>';
-      dom += '<p>' + "Video Link: " + '<a href="https://www.youtube.com/watch?v=' + value.id.videoId + '" target="newtab">' + value.snippet.title + '</a></p>';
-      dom += '<p>' + "Channel Link: " + '<a href="https://www.youtube.com/watch?v=' + value.snippet.channelId + '" target="newtab">' + value.snippet.channelTitle + '</p>';     
-      dom += '</div>';
-  });
-  $('#youtube-search-results').html(dom);
-};
+$(document).ready(function () { 
+  // This function gets the data from the YouTube API and displays it on the page
+  function getResults(searchTerm) {
+    $.getJSON("https://www.googleapis.com/youtube/v3/search",
+      {
+        "part": "snippet",
+        "key": "AIzaSyA2ged1i5fKjk7EgAFvzkamnLbdD4L8qiw",
+        "q": searchTerm,
+        "maxResults": 15
+      },
+      function (data) {
+        if (data.pageInfo.totalResults == 0) {
+          alert("No results!");
+        }
+        // If no results, empty the list
+        displayResults(data.items);
+      }
+    );
+  }
 
-$(function(){
-  $('#youtube-search-term').submit(function(event){
+  //Display results in ul
+  function displayResults(videos) {
+    var html = "";
+    $.each(videos, function (index, video) {
+      // Append results li to ul
+      console.log(video.snippet.title);
+      console.log(video.snippet.thumbnails.high.url);
+      html = html + "<li><p class='line-clamp'>" + video.snippet.title +
+        "</p><a target='_blank' href='https://www.youtube.com/watch?v=" + video.id.videoId + "'><img src='" +  video.snippet.thumbnails.high.url + "'/></a></li>" ;
+    });
+    $("#search-results ul").html(html);
+  }
+
+  //Use search term
+  $("#search-form").submit(function (event) {
     event.preventDefault();
-    var valueToSearch = $('#youtube-query').val();
-    getResults(valueToSearch);
-    $('#youtube-query').val("");
+    getResults($("#search-term").val());
   });
 });
